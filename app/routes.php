@@ -98,7 +98,7 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function(){
   });
 
   // 404
-  Route::missing(function($exception){
+  App::missing(function($exception){
     return Response::view('error', array(), 404);
   });
 
