@@ -17,3 +17,14 @@ Route::get('/', function()
 });
 
 Route::resource('nerds', 'NerdController');
+
+Route::get('nerd/edit/{id}', array('as' => 'nerd.edit', function($id)
+{
+  // return our view and Nerd information
+  return View::make('nerd-edit') // pulls app/views/nerd-edit.blade.php
+    ->with('nerd', Nerd::find($id));
+}));
+
+Route::post('nerd/edit', function(){
+
+});
