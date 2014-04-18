@@ -18,13 +18,27 @@ Route::get('/', function()
 
 Route::resource('nerds', 'NerdController');
 
-Route::get('nerd/edit/{id}', array('as' => 'nerd.edit', function($id)
+// get the cuteness level of a puppy
+Route::get('puppies/{cutelevel}', function($cutelevel)
 {
-  // return our view and Nerd information
-  return View::make('nerd-edit') // pulls app/views/nerd-edit.blade.php
-    ->with('nerd', Nerd::find($id));
-}));
+  return 'This puppy is an absolute ' . $cutelevel . ' out of ' . $cutelevel;
+});
 
-Route::post('nerd/edit', function(){
+// OR
 
+// get the parameter of name
+Route::get('users/{name}', function($name)
+{
+  return 'User Name is ' . $name;
+});
+
+// optional category
+Route::get('gallery/{category?}', function($category = 'sunset')
+{
+  // if category is set, show the category
+  // if not, then show all
+  if ($category)
+    return 'This is the ' . $category . ' section.';
+  else
+    return 'These are all the photos.';
 });
